@@ -653,7 +653,12 @@
             }).then(function (response) {
               if (!response.ok) throw new Error("submit failed");
               return response.json();
-            }).then(function () {
+            }).then(function (payload) {
+              var operatorStatus = payload && payload.operator_email && payload.operator_email.status;
+              var customerStatus = payload && payload.customer_email && payload.customer_email.status;
+              if (operatorStatus !== "sent" || customerStatus !== "sent") {
+                throw new Error("email not sent");
+              }
               setContactStatus("Sent. I have the request.", "ok");
               if (submitNotes) submitNotes.textContent = "Sent";
               track("note_intake_submit_ok", { note_length: notes.length, source: "messy_notes" });
