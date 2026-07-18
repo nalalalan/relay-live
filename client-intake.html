@@ -114,6 +114,7 @@
   <script>
     (function () {
       var config = window.AO_CONFIG || {};
+      if (config.PAID_INTAKE_PAUSED) return;
       var apiBase = (config.API_BASE || "https://alan-operator-backend-production.up.railway.app").replace(/\/$/, "");
       var form = document.getElementById("gateForm");
       var input = document.getElementById("accessCode");
