@@ -243,6 +243,13 @@
     }
     .footer-links { display: flex; gap: 18px; }
 
+    @media (min-width: 801px) and (max-height: 720px) {
+      .topbar { min-height: 58px; }
+      main { padding-top: 22px; }
+      form { gap: 12px; padding-top: 14px; padding-bottom: 15px; }
+      textarea { min-height: 126px; }
+    }
+
     @media (max-width: 800px) {
       .workspace { grid-template-columns: 1fr; gap: 32px; }
       .intro { max-width: 620px; }
