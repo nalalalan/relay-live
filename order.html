@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your RelayBrief reply</title>
+  <meta name="description" content="Your protected RelayBrief order result.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#f7f5ef">
+  <script src="site-config.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f5ef;
+      --surface: #ffffff;
+      --ink: #201f1b;
+      --muted: #68645c;
+      --line: #d9d5ca;
+      --soft: #efede6;
+      --green: #276044;
+      --green-soft: #e8f1eb;
+      --red: #8b3327;
+      --red-soft: #f7e9e5;
+      --focus: #1769aa;
+      --max: 820px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+    body {
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    button { font: inherit; }
+    a { color: inherit; text-underline-offset: 3px; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    header { border-bottom: 1px solid var(--line); }
+    .topbar { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-size: 17px; font-weight: 800; text-decoration: none; }
+    .private { color: var(--muted); font-size: 12px; font-weight: 650; }
+    main { padding: 48px 0 72px; }
+    h1 { margin: 0; font-size: 34px; line-height: 1.12; letter-spacing: 0; }
+    .status-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 30px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 620;
+    }
+    .dot { width: 9px; height: 9px; flex: 0 0 9px; border-radius: 50%; background: #9a958b; }
+    .dot[data-state="working"] { background: #b0761d; animation: pulse 1.3s ease-in-out infinite; }
+    .dot[data-state="ready"] { background: var(--green); animation: none; }
+    .dot[data-state="error"] { background: var(--red); animation: none; }
+    @keyframes pulse { 50% { opacity: .35; } }
+    .notice {
+      display: none;
+      margin-top: 24px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .notice[data-state="error"] { display: block; border-color: #dab4aa; background: var(--red-soft); color: var(--red); }
+    .notice[data-state="info"] { display: block; }
+    .result { display: none; margin-top: 34px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+    .result[data-visible="true"] { display: block; }
+    .result-section { padding: 20px; }
+    .result-section + .result-section { border-top: 1px solid var(--line); }
+    .result-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 12px; }
+    .result-label { margin: 0; color: var(--muted); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+    .copy-button {
+      min-height: 34px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--soft);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 750;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .copy-button:hover { border-color: #aaa59a; background: #e7e4db; }
+    .copy-button:focus-visible { outline: 3px solid rgba(23, 105, 170, .22); outline-offset: 2px; }
+    .subject { margin: 0; font-size: 18px; font-weight: 800; overflow-wrap: anywhere; }
+    .email-body { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; line-height: 1.62; }
+    .delivery {
+      display: none;
+      margin-top: 16px;
+      padding: 11px 13px;
+      border: 1px solid #a9c7b4;
+      border-radius: 5px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 650;
+    }
+    .delivery[data-visible="true"] { display: block; }
+    .actions { display: none; align-items: center; gap: 16px; margin-top: 22px; flex-wrap: wrap; }
+    .actions[data-visible="true"] { display: flex; }
+    .primary {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 15px;
+      border: 1px solid var(--ink);
+      border-radius: 5px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 760;
+      text-decoration: none;
+    }
+    .copy-status { min-height: 20px; color: var(--green); font-size: 13px; font-weight: 650; }
+    footer { border-top: 1px solid var(--line); }
+    .footer-row { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 12px; }
+    @media (max-width: 600px) {
+      .wrap { width: min(calc(100% - 24px), var(--max)); }
+      .topbar { min-height: 58px; }
+      main { padding: 32px 0 52px; }
+      h1 { font-size: 29px; }
+      .result-section { padding: 16px 14px; }
+      .result-head { align-items: start; }
+      .footer-row { align-items: flex-start; flex-direction: column; justify-content: center; padding: 16px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { .dot { animation: none !important; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <a class="brand" href="/">RelayBrief</a>
+      <span class="private">Protected order</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <h1>Your reply</h1>
+      <div class="status-line" aria-live="polite">
+        <span id="statusDot" class="dot" data-state="working" aria-hidden="true"></span>
+        <span id="statusText">Confirming payment...</span>
+      </div>
+      <div id="notice" class="notice" role="alert"></div>
+
+      <section id="result" class="result" aria-label="Generated email">
+        <div class="result-section">
+          <div class="result-head">
+            <p class="result-label">Subject</p>
+            <button id="copySubject" class="copy-button" type="button">Copy subject</button>
+          </div>
+          <p id="subject" class="subject"></p>
+        </div>
+        <div class="result-section">
+          <div class="result-head">
+            <p class="result-label">Email</p>
+            <button id="copyEmail" class="copy-button" type="button">Copy email</button>
+          </div>
+          <pre id="emailBody" class="email-body"></pre>
+        </div>
+      </section>
+
+      <div id="delivery" class="delivery"></div>
+      <div id="actions" class="actions">
+        <a class="primary" href="/">Write another reply</a>
+        <span id="copyStatus" class="copy-status" role="status" aria-live="polite"></span>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row"><span>RelayBrief by AO Labs</span><a href="privacy.html">Privacy</a></div>
+  </footer>
+
+  <script>
+    (() => {
+      const config = window.AO_CONFIG || {};
+      const apiBase = String(config.API_BASE || '').replace(/\/$/, '');
+      const params = new URLSearchParams(location.search);
+      const token = params.get('token') || '';
+      const statusDot = document.getElementById('statusDot');
+      const statusText = document.getElementById('statusText');
+      const notice = document.getElementById('notice');
+      const resultNode = document.getElementById('result');
+      const subjectNode = document.getElementById('subject');
+      const bodyNode = document.getElementById('emailBody');
+      const deliveryNode = document.getElementById('delivery');
+      const actions = document.getElementById('actions');
+      const copyStatus = document.getElementById('copyStatus');
+      let pollCount = 0;
+      let stopped = false;
+
+      sessionStorage.removeItem('relaybrief_order_draft_v2');
+
+      function setState(message, state) {
+        statusText.textContent = message;
+        statusDot.dataset.state = state;
+      }
+
+      function showNotice(message, state) {
+        notice.textContent = message;
+        notice.dataset.state = state || '';
+      }
+
+      function emailDeliveryText(status) {
+        if (['delivered', 'opened', 'clicked'].includes(status)) return 'The emailed copy was delivered.';
+        if (['bounced', 'failed', 'suppressed', 'complained'].includes(status)) return 'The emailed copy could not be delivered. Your result remains available here.';
+        if (status === 'sent') return 'The emailed copy was sent.';
+        return 'The emailed copy is being sent.';
+      }
+
+      function render(payload) {
+        setState(payload.message || 'Order updated.', payload.result ? 'ready' : 'working');
+        if (payload.result) {
+          subjectNode.textContent = payload.result.subject || '';
+          bodyNode.textContent = payload.result.body || '';
+          resultNode.dataset.visible = 'true';
+          deliveryNode.textContent = emailDeliveryText(payload.email_status);
+          deliveryNode.dataset.visible = 'true';
+          actions.dataset.visible = 'true';
+          document.title = 'Your reply is ready | RelayBrief';
+          if (['delivered', 'opened', 'clicked', 'bounced', 'failed', 'suppressed', 'complained'].includes(payload.email_status)) {
+            stopped = true;
+          } else if (payload.email_status === 'sent' && !payload.email_tracking_enabled) {
+            stopped = true;
+          }
+        }
+
+        if (payload.payment_status === 'refunded') {
+          stopped = true;
+          setState('Payment refunded.', 'error');
+          showNotice('RelayBrief could not complete this order. The $2 payment was refunded.', 'error');
+        } else if (payload.payment_status === 'disputed') {
+          stopped = true;
+          setState('Payment under review.', 'error');
+          showNotice('This order is under payment review.', 'error');
+        } else if (payload.payment_status === 'expired' || payload.payment_status === 'payment_failed') {
+          stopped = true;
+          setState('Payment was not completed.', 'error');
+          showNotice('Return to RelayBrief to start a new checkout. No result was generated.', 'error');
+        }
+      }
+
+      async function poll() {
+        if (stopped) return;
+        pollCount += 1;
+        try {
+          const response = await fetch(apiBase + '/api/relay/orders/' + encodeURIComponent(token), {
+            headers: { 'Accept': 'application/json' },
+            cache: 'no-store'
+          });
+          const payload = await response.json().catch(() => ({}));
+          if (response.status === 404) {
+            stopped = true;
+            setState('Order not found.', 'error');
+            showNotice('This protected order link is invalid or incomplete.', 'error');
+            return;
+          }
+          if (!response.ok) throw new Error('Order status is temporarily unavailable.');
+          render(payload);
+          if (!stopped) {
+            const delay = pollCount < 90 ? 2000 : 10000;
+            window.setTimeout(poll, delay);
+          }
+        } catch (_) {
+          setState('Reconnecting to your order...', 'working');
+          if (pollCount > 5) showNotice('Keep this page open. Your protected link will continue checking.', 'info');
+          window.setTimeout(poll, 5000);
+        }
+      }
+
+      async function copyText(value, label) {
+        try {
+          await navigator.clipboard.writeText(value);
+        } catch (_) {
+          const area = document.createElement('textarea');
+          area.value = value;
+          area.style.position = 'fixed';
+          area.style.opacity = '0';
+          document.body.appendChild(area);
+          area.select();
+          document.execCommand('copy');
+          area.remove();
+        }
+        copyStatus.textContent = label + ' copied.';
+        window.setTimeout(() => { copyStatus.textContent = ''; }, 2200);
+      }
+
+      document.getElementById('copySubject').addEventListener('click', () => copyText(subjectNode.textContent, 'Subject'));
+      document.getElementById('copyEmail').addEventListener('click', () => copyText(bodyNode.textContent, 'Email'));
+
+      if (!/^[a-f0-9]{64}$/.test(token)) {
+        stopped = true;
+        setState('Order link missing.', 'error');
+        showNotice('Open the protected link returned after checkout or in your RelayBrief email.', 'error');
+      } else {
+        poll();
+      }
+    })();
+  </script>
+</body>
+</html>

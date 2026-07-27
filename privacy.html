@@ -3,41 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Alan Pham privacy</title>
-  <meta name="description" content="Privacy note for Alan Pham's one-email follow-up service.">
+  <title>RelayBrief privacy</title>
+  <meta name="description" content="Privacy notice for RelayBrief orders.">
   <link rel="canonical" href="https://relaybrief.com/privacy.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
-    :root{--bg:#fbfaf7;--ink:#171511;--muted:#6d665d;--line:#ded9cf}
+    :root{--bg:#f7f5ef;--ink:#201f1b;--muted:#68645c;--line:#d9d5ca}
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45}
-    main{width:min(calc(100% - 32px),680px);margin:0 auto;padding:56px 0}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+    main{width:min(calc(100% - 32px),720px);margin:0 auto;padding:54px 0}
     a{color:inherit;text-underline-offset:3px}
-    h1{font-size:28px;line-height:1.1;margin:0 0 24px}
+    h1{font-size:30px;line-height:1.1;letter-spacing:0;margin:0 0 8px}
+    .updated{margin:0 0 28px;color:var(--muted);font-size:13px}
     dl{margin:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    div{display:grid;grid-template-columns:130px minmax(0,1fr);gap:18px;padding:14px 0;border-top:1px solid var(--line)}
-    div:first-child{border-top:0}
-    dt{color:var(--muted);font-weight:700}
-    dd{margin:0;font-weight:560}
-    footer{margin-top:28px;color:var(--muted);font-size:14px;display:flex;gap:16px;flex-wrap:wrap}
-    @media(max-width:560px){div{grid-template-columns:1fr;gap:4px}}
+    .row{display:grid;grid-template-columns:142px minmax(0,1fr);gap:20px;padding:15px 0;border-top:1px solid var(--line)}
+    .row:first-child{border-top:0}
+    dt{color:var(--muted);font-weight:720}
+    dd{margin:0}
+    footer{margin-top:28px;color:var(--muted);font-size:14px;display:flex;gap:18px;flex-wrap:wrap}
+    @media(max-width:560px){.row{grid-template-columns:1fr;gap:4px}}
   </style>
 </head>
 <body>
   <main>
-    <h1>Alan Pham privacy.</h1>
+    <h1>RelayBrief privacy</h1>
+    <p class="updated">Effective July 26, 2026</p>
     <dl>
-      <div><dt>What I use</dt><dd>Your email, stuck client message, rough draft, or bullets are used to prepare and deliver the reply draft.</dd></div>
-      <div><dt>Payment</dt><dd>Stripe handles payment after the email. This site does not collect card numbers.</dd></div>
-      <div><dt>No account</dt><dd>No account, password, upload portal, extension, or executable download is required.</dd></div>
-      <div><dt>Private details</dt><dd>Remove names, prices, or confidential details before emailing if needed.</dd></div>
-      <div><dt>Retention</dt><dd>Notes may be kept as delivery records unless you ask for deletion.</dd></div>
-      <div><dt>Contact</dt><dd><a href="https://mail.google.com/mail/?view=cm&fs=1&to=pham.alann%40gmail.com" target="_blank" rel="noopener">pham.alann@gmail.com</a></dd></div>
+      <div class="row"><dt>Collected</dt><dd>RelayBrief receives your email address, submitted message or notes, optional client and goal details, selected tone, basic browser and network security data, and order status.</dd></div>
+      <div class="row"><dt>Used for</dt><dd>The data is used to validate the request, prevent abuse, create and deliver the result, provide the protected order page, process refunds, and maintain payment and delivery records.</dd></div>
+      <div class="row"><dt>Processors</dt><dd>Stripe processes payment, OpenAI processes the submitted material to create the email, and Resend sends the emailed copy. Each provider handles data under its own terms and privacy practices.</dd></div>
+      <div class="row"><dt>Card data</dt><dd>RelayBrief does not receive or store full card numbers. Stripe supplies payment identifiers and status needed to fulfill or refund the order.</dd></div>
+      <div class="row"><dt>Retention</dt><dd>The email, submitted content, and generated result are removed from RelayBrief's order store after 30 days. Hashed abuse controls and payment, refund, fraud, and operational records may be kept longer.</dd></div>
+      <div class="row"><dt>Protected link</dt><dd>The order link acts like a password for the result. Do not post it publicly or forward it to people who should not see the content.</dd></div>
+      <div class="row"><dt>No sale</dt><dd>RelayBrief does not sell order content or use it for third-party advertising.</dd></div>
+      <div class="row"><dt>Requests</dt><dd>For an access or deletion request, contact pham.alann@gmail.com from the order email and include the protected order link. Never include card details.</dd></div>
     </dl>
-    <footer>
-      <a href="/">relaybrief.com</a>
-      <a href="terms.html">terms</a>
-    </footer>
+    <footer><a href="/">RelayBrief</a><a href="terms.html">Terms</a></footer>
   </main>
 </body>
 </html>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /order.html
+Disallow: /client-intake.html
+
+Sitemap: https://relaybrief.com/sitemap.xml

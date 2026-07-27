@@ -1,678 +1,568 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RelayBrief | paused</title>
-  <meta name="description" content="RelayBrief is paused and is not accepting requests or purchases.">
-  <link rel="canonical" href="https://relaybrief.com/" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RelayBrief | One ready-to-send client email for $2</title>
+  <meta name="description" content="Paste a stuck client email or rough notes. RelayBrief writes one ready-to-send reply for $2 and delivers it on screen and by email.">
+  <link rel="canonical" href="https://relaybrief.com/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Alan Pham">
-  <meta property="og:title" content="RelayBrief is paused">
-  <meta property="og:description" content="RelayBrief is not accepting requests or purchases.">
+  <meta property="og:site_name" content="RelayBrief">
+  <meta property="og:title" content="One ready-to-send client email for $2">
+  <meta property="og:description" content="Paste the stuck thread. Get a clear reply on screen and by email.">
   <meta property="og:url" content="https://relaybrief.com/">
   <meta property="og:image" content="https://relaybrief.com/og-image-service-20260518-stuck-client-email.png">
-  <meta property="og:image:secure_url" content="https://relaybrief.com/og-image-service-20260518-stuck-client-email.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Send one stuck client email. I'll write the reply.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="RelayBrief is paused">
-  <meta name="twitter:description" content="RelayBrief is not accepting requests or purchases.">
+  <meta name="twitter:title" content="One ready-to-send client email for $2">
+  <meta name="twitter:description" content="Paste the stuck thread. Get a clear reply on screen and by email.">
   <meta name="twitter:image" content="https://relaybrief.com/og-image-service-20260518-stuck-client-email.png">
-  <meta name="twitter:image:alt" content="Send one stuck client email. I'll write the reply.">
-  <link rel="icon" href="/favicon.svg?v=20260518-stuck-client-email" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20260518-stuck-client-email" />
-  <meta name="theme-color" content="#fbfaf7" />
-  <script src="site-config.js?v=20260518-stuck-client-email"></script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f5ef">
+  <script src="site-config.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "RelayBrief",
+    "description": "One ready-to-send business email based on the customer's submitted material.",
+    "provider": {"@type": "Organization", "name": "AO Labs"},
+    "offers": {"@type": "Offer", "price": "2.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}
+  }
+  </script>
   <style>
     :root {
       color-scheme: light;
-      --bg: #fbfaf7;
-      --ink: #1d1b18;
-      --muted: #67625b;
-      --line: #ded9cf;
-      --panel: #ffffff;
-      --soft: #f4f2ec;
-      --accent: #242321;
-      --max: 720px;
+      --paper: #f7f5ef;
+      --surface: #ffffff;
+      --ink: #201f1b;
+      --muted: #68645c;
+      --line: #d9d5ca;
+      --soft: #efede6;
+      --green: #276044;
+      --green-soft: #e8f1eb;
+      --red: #8b3327;
+      --red-soft: #f7e9e5;
+      --focus: #1769aa;
+      --max: 1060px;
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
     body {
-      background: var(--bg);
+      min-height: 100vh;
+      background: var(--paper);
       color: var(--ink);
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.48;
+      font-size: 16px;
+      line-height: 1.5;
     }
-    a { color: inherit; text-decoration: none; }
-    .wrap {
-      width: min(calc(100% - 34px), var(--max));
-      margin: 0 auto;
-    }
+    button, input, textarea { font: inherit; }
+    a { color: inherit; text-underline-offset: 3px; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+
     header {
       border-bottom: 1px solid var(--line);
-      background: var(--bg);
+      background: rgba(247, 245, 239, .96);
     }
-    .top {
+    .topbar {
       min-height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 650;
+      gap: 24px;
     }
-    .name {
-      color: var(--ink);
-      font-weight: 760;
-    }
-    main { padding: 46px 0 34px; }
-    .service {
+    .brand { font-size: 17px; font-weight: 800; text-decoration: none; }
+    .topnav { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: 14px; font-weight: 650; }
+
+    main { padding: 30px 0 58px; }
+    .workspace {
       display: grid;
-      gap: 22px;
+      grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+      gap: 58px;
+      align-items: start;
     }
+    .intro { padding-top: 4px; }
     h1 {
-      max-width: 620px;
       margin: 0;
-      font-size: clamp(30px, 5vw, 42px);
-      line-height: 1.08;
+      font-size: 42px;
+      line-height: 1.06;
       letter-spacing: 0;
-      font-weight: 780;
+      font-weight: 820;
       overflow-wrap: anywhere;
     }
     .lead {
-      max-width: 630px;
-      margin: 0;
+      margin: 18px 0 0;
       color: var(--muted);
       font-size: 18px;
-      line-height: 1.45;
-      font-weight: 540;
-      overflow-wrap: anywhere;
+      line-height: 1.48;
     }
-    .lead strong { color: var(--ink); font-weight: 760; }
-    .actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      min-height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 16px;
-      border: 1px solid var(--accent);
-      border-radius: 6px;
-      background: var(--accent);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 720;
-      white-space: nowrap;
-      max-width: 100%;
-      cursor: pointer;
-    }
-    .text-link {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 650;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    button.text-link {
-      border: 0;
-      background: transparent;
+    .promise {
+      margin: 26px 0 0;
       padding: 0;
-      font: inherit;
-      cursor: pointer;
-    }
-    .contact-panel {
-      position: fixed;
-      inset: 0;
-      z-index: 40;
-      display: grid;
-      place-items: center;
-      padding: 18px;
-      border: 0;
-      border-radius: 0;
-      background: rgba(29, 27, 24, .42);
-    }
-    .contact-panel[hidden] { display: none; }
-    .contact-card {
-      width: min(100%, 520px);
-      max-height: calc(100vh - 36px);
-      display: grid;
-      gap: 13px;
-      overflow: auto;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--panel);
-      box-shadow: 0 22px 70px rgba(29, 27, 24, .2);
-    }
-    .contact-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: start;
-    }
-    .contact-head h2 {
-      margin: 0;
-      font-size: 17px;
-      line-height: 1.2;
-      letter-spacing: 0;
-    }
-    .contact-head p {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 560;
-    }
-    .mini-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 32px;
-      padding: 0 10px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--soft);
-      color: var(--ink);
-      font: inherit;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .field {
-      display: grid;
-      gap: 6px;
-    }
-    #notesForm {
-      display: grid;
-      gap: 12px;
-      margin: 0;
-    }
-    .field label {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 720;
-    }
-    .field input,
-    .field textarea {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: #fff;
-      color: var(--ink);
-      font: inherit;
-      font-size: 15px;
-      line-height: 1.42;
-    }
-    .field input { min-height: 42px; padding: 0 12px; }
-    .field textarea {
-      min-height: 138px;
-      padding: 11px 12px;
-      resize: vertical;
-    }
-    .contact-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .contact-status {
-      min-height: 20px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 650;
-    }
-    .contact-status[data-state="ok"] { color: #25633d; }
-    .contact-status[data-state="error"] { color: #8a2d20; }
-    .facts {
-      margin: 4px 0 0;
+      list-style: none;
       border-top: 1px solid var(--line);
+    }
+    .promise li {
+      display: grid;
+      grid-template-columns: 20px minmax(0, 1fr);
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .check { color: var(--green); font-weight: 900; }
+
+    .request-tool {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+    }
+    .tool-head {
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 20px;
       border-bottom: 1px solid var(--line);
     }
-    .facts div {
+    .tool-head h2 { margin: 0; font-size: 16px; line-height: 1.25; letter-spacing: 0; }
+    .price { font-size: 20px; font-weight: 820; white-space: nowrap; }
+    .price small { color: var(--muted); font-size: 12px; font-weight: 650; }
+    form { display: grid; gap: 14px; padding: 16px 20px 17px; }
+    .field { display: grid; gap: 7px; min-width: 0; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    label, legend { color: var(--ink); font-size: 13px; font-weight: 740; }
+    .optional { color: var(--muted); font-weight: 560; }
+    input[type="email"],
+    input[type="text"],
+    textarea {
+      width: 100%;
+      border: 1px solid #bdb8ac;
+      border-radius: 5px;
+      background: #fff;
+      color: var(--ink);
+      outline: 0;
+    }
+    input[type="email"], input[type="text"] { min-height: 44px; padding: 0 12px; }
+    textarea { min-height: 138px; padding: 11px 12px; line-height: 1.45; resize: vertical; }
+    input:focus, textarea:focus { border-color: var(--focus); box-shadow: 0 0 0 3px rgba(23, 105, 170, .13); }
+    ::placeholder { color: #8a857c; opacity: 1; }
+
+    fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+    legend { margin-bottom: 7px; }
+    .segments {
       display: grid;
-      grid-template-columns: 136px minmax(0, 1fr);
-      gap: 16px;
-      padding: 13px 0;
-      border-top: 1px solid var(--line);
-    }
-    .facts div:first-child { border-top: 0; }
-    .facts dt {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
-    .facts dd {
-      margin: 0;
-      font-size: 15px;
-      font-weight: 560;
-      overflow-wrap: anywhere;
-    }
-    .example {
-      border: 1px solid var(--line);
-      border-radius: 6px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      min-height: 42px;
+      border: 1px solid #bdb8ac;
+      border-radius: 5px;
       overflow: hidden;
-      background: var(--panel);
     }
-    .example-row {
-      padding: 16px;
-      border-top: 1px solid var(--line);
+    .segments input { position: absolute; opacity: 0; pointer-events: none; }
+    .segments label {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 6px;
+      border-left: 1px solid #bdb8ac;
+      background: #fff;
+      color: var(--muted);
+      text-align: center;
+      cursor: pointer;
     }
-    .example-row:first-child {
-      border-top: 0;
+    .segments label:first-of-type { border-left: 0; }
+    .segments input:checked + label { background: var(--soft); color: var(--ink); font-weight: 800; }
+    .segments input:focus-visible + label { outline: 3px solid rgba(23, 105, 170, .22); outline-offset: -3px; }
+
+    .terms-row { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 9px; align-items: start; }
+    .terms-row input { width: 16px; height: 16px; margin: 3px 0 0; accent-color: var(--green); }
+    .terms-row label { color: var(--muted); font-size: 12px; line-height: 1.45; font-weight: 560; }
+    .submit-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .primary {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border: 1px solid var(--ink);
+      border-radius: 5px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 780;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .primary:hover { background: #383630; }
+    .primary:focus-visible { outline: 3px solid rgba(23, 105, 170, .25); outline-offset: 2px; }
+    .primary:disabled { cursor: wait; opacity: .68; }
+    .secure-note { color: var(--muted); font-size: 12px; }
+    .status {
+      min-height: 0;
+      display: none;
+      margin: 0;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      color: var(--muted);
       background: var(--soft);
+      font-size: 13px;
+      font-weight: 650;
     }
-    .example b {
-      display: block;
-      margin-bottom: 7px;
+    .status[data-state="working"], .status[data-state="ok"], .status[data-state="error"] { display: block; }
+    .status[data-state="ok"] { border-color: #a9c7b4; background: var(--green-soft); color: var(--green); }
+    .status[data-state="error"] { border-color: #dab4aa; background: var(--red-soft); color: var(--red); }
+    .bot-field { display: none; }
+    altcha-widget { display: none; }
+
+    .sample-band { margin-top: 70px; padding-top: 34px; border-top: 1px solid var(--line); }
+    .sample-title { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+    .sample-title h2 { margin: 0; font-size: 24px; line-height: 1.2; letter-spacing: 0; }
+    .sample-title p { margin: 0; color: var(--muted); font-size: 13px; }
+    .sample-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; }
+    .sample-pane { min-width: 0; padding: 20px; }
+    .sample-pane + .sample-pane { border-left: 1px solid var(--line); }
+    .sample-label { margin: 0 0 10px; color: var(--muted); font-size: 12px; font-weight: 780; text-transform: uppercase; }
+    .sample-copy { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-family: inherit; font-size: 14px; line-height: 1.55; }
+    .sample-subject { display: block; margin-bottom: 12px; font-weight: 800; }
+
+    footer { border-top: 1px solid var(--line); }
+    .footer-row {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
       color: var(--muted);
       font-size: 12px;
-      font-weight: 780;
-      letter-spacing: .04em;
-      text-transform: uppercase;
     }
-    .example p {
-      margin: 0;
-      font-size: 15px;
-      font-weight: 560;
-      line-height: 1.44;
-      overflow-wrap: anywhere;
+    .footer-links { display: flex; gap: 18px; }
+
+    @media (max-width: 800px) {
+      .workspace { grid-template-columns: 1fr; gap: 32px; }
+      .intro { max-width: 620px; }
+      .promise { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .promise li { display: block; padding-right: 12px; border-right: 1px solid var(--line); }
+      .promise li:last-child { border-right: 0; }
+      .check { display: block; margin-bottom: 4px; }
     }
-    .example strong { font-weight: 760; }
-    .quiet {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 540;
-    }
-    footer {
-      padding: 18px 0 28px;
-      color: var(--muted);
-      font-size: 13px;
-      border-top: 1px solid var(--line);
-    }
-    .foot {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    @media (max-width: 1200px) {
-      .wrap {
-        width: min(100%, 390px);
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-    }
-    @media (max-width: 560px) {
-      .wrap { width: min(100%, 390px); max-width: 100%; padding: 0 15px; }
-      .top { min-height: 58px; }
-      .top .text-link { display: none; }
-      main { padding-top: 32px; }
-      .service,
-      h1,
-      .lead,
-      .facts,
-      .example,
-      .contact-card,
-      .actions,
-      .quiet { max-width: calc(100vw - 30px); min-width: 0; }
-      h1 { font-size: 28px; }
-      .lead { font-size: 16px; }
-      .actions { display: grid; grid-template-columns: minmax(0, 1fr); }
-      .btn { width: 100%; }
-      .contact-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
-      .contact-actions .btn,
-      .contact-actions .mini-btn { width: 100%; }
-      .facts div { display: block; }
-      .facts dt { margin-bottom: 4px; }
+    @media (max-width: 600px) {
+      .wrap { width: min(calc(100% - 24px), var(--max)); }
+      .topbar { min-height: 58px; }
+      .topnav a:first-child { display: none; }
+      main { padding: 24px 0 48px; }
+      h1 { font-size: 34px; }
+      .lead { font-size: 17px; }
+      .promise { grid-template-columns: 1fr; }
+      .promise li { display: grid; border-right: 0; }
+      .field-row, .sample-grid { grid-template-columns: 1fr; }
+      .sample-pane + .sample-pane { border-left: 0; border-top: 1px solid var(--line); }
+      .tool-head { padding: 0 14px; }
+      form { padding: 15px 14px 16px; }
+      .segments { grid-template-columns: 1fr 1fr; }
+      .segments label:nth-of-type(3) { border-left: 0; border-top: 1px solid #bdb8ac; }
+      .segments label:nth-of-type(4) { border-top: 1px solid #bdb8ac; }
+      .primary { width: 100%; }
+      .submit-row { display: grid; }
+      .sample-title { align-items: start; flex-direction: column; gap: 6px; }
+      .footer-row { align-items: flex-start; flex-direction: column; justify-content: center; padding: 18px 0; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap top">
-      <a class="name" href="/">Alan Pham</a>
-      <span>Paused</span>
+    <div class="wrap topbar">
+      <a class="brand" href="/">RelayBrief</a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="#sample">Sample</a>
+        <span>One reply &middot; $2</span>
+      </nav>
     </div>
   </header>
 
   <main>
-    <section class="wrap service" data-primary-money-path="paused">
-      <h1>RelayBrief is paused.</h1>
-      <p class="lead">No new requests or purchases are being accepted.</p>
+    <div class="wrap">
+      <section class="workspace" aria-labelledby="page-title">
+        <div class="intro">
+          <h1 id="page-title">RelayBrief</h1>
+          <p class="lead">Turn a stuck client thread into one clear, ready-to-send reply.</p>
+          <ul class="promise" aria-label="Order details">
+            <li><span class="check" aria-hidden="true">&#10003;</span><span>Starts after payment</span></li>
+            <li><span class="check" aria-hidden="true">&#10003;</span><span>Shown on screen</span></li>
+            <li><span class="check" aria-hidden="true">&#10003;</span><span>Copy sent by email</span></li>
+          </ul>
+        </div>
 
-      <div class="actions">
-        <a id="heroSampleLink" class="text-link" href="sample.pdf">Open archived example</a>
-      </div>
+        <div class="request-tool">
+          <div class="tool-head">
+            <h2>Your request</h2>
+            <div class="price">$2 <small>USD</small></div>
+          </div>
+          <form id="orderForm" novalidate>
+            <div class="field">
+              <label for="email">Your email</label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@company.com">
+            </div>
 
-      <dl class="facts">
-        <div>
-          <dt>Status</dt>
-          <dd>Paused.</dd>
-        </div>
-        <div>
-          <dt>Requests</dt>
-          <dd>Not accepted.</dd>
-        </div>
-        <div>
-          <dt>Purchases</dt>
-          <dd>All RelayBrief payment links are inactive.</dd>
-        </div>
-        <div>
-          <dt>History</dt>
-          <dd>The example remains available as an archive.</dd>
-        </div>
-      </dl>
+            <div class="field">
+              <label for="requestText">Email, rough draft, or situation</label>
+              <textarea id="requestText" name="request_text" minlength="40" maxlength="8000" required placeholder="Paste the last message or describe what happened and what you need to say next."></textarea>
+            </div>
 
-      <div class="example" aria-label="Example stuck client email reply">
-        <div class="example-row">
-          <b>What came in</b>
-          <p>sent a quote two weeks ago. they said it looked reasonable but needed to check budget. no reply since. i want to follow up without sounding pushy.</p>
-        </div>
-        <div class="example-row">
-          <b>What comes back</b>
-          <p><strong>Subject: quick check on the quote</strong><br>Hi Jordan - quick check on the quote from two weeks ago. Should I keep this open for this month, or close it out for now? If it still makes sense, I can hold the Thursday start slot.</p>
-        </div>
-      </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="clientName">Client or company <span class="optional">optional</span></label>
+                <input id="clientName" name="client_name" type="text" maxlength="200" autocomplete="off" placeholder="Acme">
+              </div>
+              <div class="field">
+                <label for="goal">What should happen next? <span class="optional">optional</span></label>
+                <input id="goal" name="goal" type="text" maxlength="500" autocomplete="off" placeholder="Get a clear yes or no">
+              </div>
+            </div>
 
-      <p class="quiet">Do not submit client material while RelayBrief is paused.</p>
-    </section>
+            <fieldset>
+              <legend>Tone</legend>
+              <div class="segments">
+                <input id="tonePlain" name="tone" type="radio" value="plain" checked>
+                <label for="tonePlain">Plain</label>
+                <input id="toneWarm" name="tone" type="radio" value="warm">
+                <label for="toneWarm">Warm</label>
+                <input id="toneDirect" name="tone" type="radio" value="direct">
+                <label for="toneDirect">Direct</label>
+                <input id="toneFirm" name="tone" type="radio" value="firm">
+                <label for="toneFirm">Firm</label>
+              </div>
+            </fieldset>
+
+            <div class="bot-field" aria-hidden="true">
+              <label for="companyWebsite">Company website</label>
+              <input id="companyWebsite" name="company_website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <altcha-widget id="humanCheck" name="altcha" display="invisible" auto="off" workers="2"></altcha-widget>
+
+            <div class="terms-row">
+              <input id="termsAccepted" name="terms_accepted" type="checkbox" required>
+              <label for="termsAccepted">I agree to the <a href="terms.html">terms</a> and <a href="privacy.html">privacy notice</a>. If RelayBrief cannot produce and send the paid result, the $2 payment is refunded.</label>
+            </div>
+
+            <p id="formStatus" class="status" role="status" aria-live="polite"></p>
+
+            <div class="submit-row">
+              <button id="submitButton" class="primary" type="submit">Get my reply - $2</button>
+              <span class="secure-note">Secure payment through Stripe</span>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="sample" class="sample-band" aria-labelledby="sample-title">
+        <div class="sample-title">
+          <h2 id="sample-title">Example</h2>
+          <p>Messy notes in. Sendable email out.</p>
+        </div>
+        <div class="sample-grid">
+          <div class="sample-pane">
+            <p class="sample-label">Request</p>
+            <p class="sample-copy">Sent a proposal last Tuesday. They said it looked good but needed to check with their partner. No reply since. I do not want to sound desperate. Need to know if this is still happening.</p>
+          </div>
+          <div class="sample-pane">
+            <p class="sample-label">RelayBrief reply</p>
+            <p class="sample-copy"><span class="sample-subject">Subject: Quick check-in on the proposal</span>Hi,
+
+I wanted to check in on the proposal I sent last Tuesday. Is this still something you would like to move forward with?
+
+If you or your partner have questions, I am happy to answer them. If priorities have changed, a quick no is completely fine too. Either way, it would be helpful to know where things stand.
+
+Thanks,</p>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
-    <div class="wrap foot">
-      <span>relaybrief.com</span>
-      <a href="sample.pdf" id="sampleLink">example PDF</a>
-      <a href="terms.html">terms</a>
-      <a href="privacy.html">privacy</a>
+    <div class="wrap footer-row">
+      <span>RelayBrief by AO Labs</span>
+      <div class="footer-links"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
     </div>
   </footer>
 
+  <script src="vendor/altcha.min.js"></script>
   <script>
-    (function () {
-      var config = window.AO_CONFIG || {};
-      if (config.RELAY_PAUSED !== false) return;
-      var eventUrl = config.RELAY_INTENT_EVENT_URL || "https://alan-operator-backend-production.up.railway.app/api/relay/event";
-      var leadUrl = config.RELAY_INTENT_LEAD_URL || "https://alan-operator-backend-production.up.railway.app/api/relay/lead";
-      var sampleUrl = config.SAMPLE_PDF_URL || "sample.pdf";
-      var sessionKey = "ao_relay_session_id";
-      var sessionId = localStorage.getItem(sessionKey);
-      var startedAt = new Date();
-      var startedMs = Date.now();
-      var maxScrollPct = 0;
-      var scrollMarks = {};
-      var query = new URLSearchParams(window.location.search);
+    (() => {
+      const config = window.AO_CONFIG || {};
+      const apiBase = String(config.API_BASE || '').replace(/\/$/, '');
+      const form = document.getElementById('orderForm');
+      const submitButton = document.getElementById('submitButton');
+      const statusNode = document.getElementById('formStatus');
+      const widget = document.getElementById('humanCheck');
+      const draftKey = 'relaybrief_order_draft_v2';
+      let submitting = false;
 
-      if (!sessionId) {
-        sessionId = "relay-" + Math.random().toString(36).slice(2) + Date.now().toString(36);
-        localStorage.setItem(sessionKey, sessionId);
+      widget.configure({
+        challenge: apiBase + '/api/relay/orders/challenge',
+        auto: 'off',
+        display: 'invisible',
+        workers: 2,
+        minDuration: 500
+      });
+
+      function uuid4() {
+        if (crypto.randomUUID) return crypto.randomUUID();
+        const bytes = crypto.getRandomValues(new Uint8Array(16));
+        bytes[6] = (bytes[6] & 15) | 64;
+        bytes[8] = (bytes[8] & 63) | 128;
+        const hex = Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('');
+        return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
       }
 
-      function metadata(extra) {
-        var data = {
-          surface: "relay_product",
-          page_started_at: startedAt.toISOString(),
-          elapsed_ms: Date.now() - startedMs,
-          max_scroll_pct: maxScrollPct,
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
-          local_hour: String(new Date().getHours()).padStart(2, "0"),
-          viewport_w: window.innerWidth || 0,
-          viewport_h: window.innerHeight || 0,
-          utm_source: query.get("utm_source") || "",
-          utm_medium: query.get("utm_medium") || "",
-          utm_campaign: query.get("utm_campaign") || "",
-          utm_content: query.get("utm_content") || "",
-          rbp: query.get("rbp") || ""
+      function readDraft() {
+        try { return JSON.parse(sessionStorage.getItem(draftKey) || '{}'); }
+        catch (_) { return {}; }
+      }
+
+      function currentFields() {
+        const selectedTone = form.querySelector('input[name="tone"]:checked');
+        return {
+          email: form.email.value.trim(),
+          request_text: form.request_text.value.trim(),
+          client_name: form.client_name.value.trim(),
+          goal: form.goal.value.trim(),
+          tone: selectedTone ? selectedTone.value : 'plain',
+          company_website: form.company_website.value
         };
-        Object.keys(extra || {}).forEach(function (key) { data[key] = extra[key]; });
-        return data;
       }
 
-      function track(eventType, extra) {
+      function fingerprint(fields) {
+        return JSON.stringify(fields);
+      }
+
+      function saveDraft(extra = {}) {
+        const previous = readDraft();
+        const next = { ...previous, fields: currentFields(), ...extra };
+        sessionStorage.setItem(draftKey, JSON.stringify(next));
+        return next;
+      }
+
+      function restoreDraft() {
+        const draft = readDraft();
+        const fields = draft.fields || {};
+        ['email', 'request_text', 'client_name', 'goal'].forEach(name => {
+          if (typeof fields[name] === 'string') form.elements[name].value = fields[name];
+        });
+        if (fields.tone) {
+          const tone = form.querySelector(`input[name="tone"][value="${CSS.escape(fields.tone)}"]`);
+          if (tone) tone.checked = true;
+        }
+        return draft;
+      }
+
+      function setStatus(message, state) {
+        statusNode.textContent = message;
+        statusNode.dataset.state = state || '';
+      }
+
+      function setBusy(isBusy) {
+        submitting = isBusy;
+        submitButton.disabled = isBusy;
+        submitButton.textContent = isBusy ? 'Preparing secure checkout...' : 'Get my reply - $2';
+      }
+
+      function publicError(response, payload) {
+        if (response.status === 429) return 'Checkout limit reached. Please try again tomorrow.';
+        if (response.status === 503) return 'Checkout is temporarily unavailable. No payment was taken.';
+        if (response.status === 422) return 'Check the email, request, and agreement, then try again.';
+        if (response.status === 409) return 'This draft changed after checkout started. Please try again.';
+        if (response.status >= 500) return 'Checkout could not be prepared. No payment was taken.';
+        return typeof payload.detail === 'string' ? payload.detail : 'The request could not be accepted.';
+      }
+
+      async function proofFor(draft, forceNew) {
+        if (!forceNew && draft.altcha) return draft.altcha;
+        widget.reset();
+        const result = await widget.verify();
+        if (!result || !result.payload) throw new Error('Verification could not be completed. Please try again.');
+        saveDraft({ altcha: result.payload });
+        return result.payload;
+      }
+
+      async function postOrder(body) {
+        return fetch(apiBase + '/api/relay/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+      }
+
+      form.addEventListener('input', () => {
+        if (!submitting) saveDraft();
+      });
+
+      form.addEventListener('submit', async event => {
+        event.preventDefault();
+        if (submitting) return;
+        if (!form.reportValidity()) return;
+
+        setBusy(true);
+        setStatus('Checking the request before payment...', 'working');
         try {
-          fetch(eventUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            keepalive: true,
-            body: JSON.stringify({
-              session_id: sessionId,
-              event_type: eventType,
-              path: window.location.pathname,
-              page_url: window.location.href,
-              referrer: document.referrer || "",
-              metadata: metadata(extra || {})
-            })
-          }).catch(function () {});
-        } catch (error) {}
-      }
-
-      function scrollPercent() {
-        var doc = document.documentElement;
-        var available = Math.max(doc.scrollHeight - window.innerHeight, 1);
-        return Math.max(0, Math.min(100, Math.round((window.scrollY / available) * 100)));
-      }
-
-      var contactPanel = document.getElementById("contact-alan");
-      var contactCard = document.querySelector(".contact-card");
-      var notesForm = document.getElementById("notesForm");
-      var contactEmail = document.getElementById("contactEmail");
-      var contactNotes = document.getElementById("contactNotes");
-      var contactStatus = document.getElementById("contactStatus");
-      var submitNotes = document.getElementById("submitNotes");
-      var copyEmail = document.getElementById("copyEmail");
-      var openGmail = document.getElementById("openGmail");
-      var closeContact = document.getElementById("closeContact");
-      var alanEmail = "pham.alann@gmail.com";
-      var lastContactTrigger = null;
-      var contactPointerScroll = null;
-
-      function setContactStatus(message, state) {
-        if (!contactStatus) return;
-        contactStatus.textContent = message || "";
-        if (state) {
-          contactStatus.dataset.state = state;
-        } else {
-          contactStatus.removeAttribute("data-state");
-        }
-      }
-
-      function openContactPanel(trigger) {
-        if (!contactPanel) return;
-        var pointerScroll = contactPointerScroll;
-        contactPointerScroll = null;
-        var keepX = pointerScroll ? pointerScroll.x : (window.scrollX || 0);
-        var keepY = pointerScroll ? pointerScroll.y : (window.scrollY || 0);
-        function restoreScroll() {
-          window.scrollTo(keepX, keepY);
-        }
-        lastContactTrigger = trigger || document.activeElement;
-        contactPanel.hidden = false;
-        document.documentElement.classList.add("contact-open");
-        document.body.classList.add("contact-open");
-        restoreScroll();
-        window.requestAnimationFrame(restoreScroll);
-        window.setTimeout(function () {
-          if (contactCard) contactCard.focus({ preventScroll: true });
-          restoreScroll();
-        }, 40);
-        window.setTimeout(restoreScroll, 160);
-      }
-
-      function closeContactPanel() {
-        if (!contactPanel) return;
-        contactPanel.hidden = true;
-        document.documentElement.classList.remove("contact-open");
-        document.body.classList.remove("contact-open");
-        if (lastContactTrigger && lastContactTrigger.focus) {
-          lastContactTrigger.focus({ preventScroll: true });
-        }
-      }
-
-      function gmailUrl(notes) {
-        var body = [
-          "Hi Alan,",
-          "",
-          "I have one stuck client email. Please write one reply draft.",
-          "",
-          "Last message, rough draft, or bullets:",
-          notes || "",
-          "",
-          "What I want the reply to get:"
-        ].join("\n");
-        return "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(alanEmail) +
-          "&su=" + encodeURIComponent("Stuck client email reply") +
-          "&body=" + encodeURIComponent(body);
-      }
-
-      document.querySelectorAll(".js-open-contact").forEach(function (link) {
-        link.addEventListener("pointerdown", function () {
-          contactPointerScroll = { x: window.scrollX || 0, y: window.scrollY || 0 };
-        });
-        link.addEventListener("click", function (event) {
-          event.preventDefault();
-          openContactPanel(link);
-          track("email_intent_click", { money_path: "free_email_preview_payment_after_fit" });
-        });
-      });
-
-      if (closeContact) {
-        closeContact.addEventListener("click", closeContactPanel);
-      }
-
-      if (contactPanel) {
-        contactPanel.addEventListener("click", function (event) {
-          if (event.target === contactPanel) closeContactPanel();
-        });
-      }
-
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape" && contactPanel && !contactPanel.hidden) {
-          closeContactPanel();
-        }
-      });
-
-      if (copyEmail) {
-        copyEmail.addEventListener("click", function () {
-          function done() {
-            setContactStatus("Copied pham.alann@gmail.com.", "ok");
-            track("email_copy_click", { target: "alan_email" });
+          const fields = currentFields();
+          let draft = readDraft();
+          const currentFingerprint = fingerprint(fields);
+          if (!draft.session_id || (draft.submitted_fingerprint && draft.submitted_fingerprint !== currentFingerprint)) {
+            draft = saveDraft({ session_id: uuid4(), altcha: '', submitted_fingerprint: '' });
           }
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(alanEmail).then(done).catch(function () {
-              setContactStatus("Email: " + alanEmail, "ok");
-            });
-          } else {
-            setContactStatus("Email: " + alanEmail, "ok");
+
+          let proof = await proofFor(draft, false);
+          let body = {
+            ...fields,
+            altcha: proof,
+            session_id: draft.session_id,
+            terms_accepted: form.terms_accepted.checked
+          };
+          saveDraft({ submitted_fingerprint: currentFingerprint, altcha: proof });
+          let response = await postOrder(body);
+
+          if (response.status === 403 || response.status === 409) {
+            proof = await proofFor(readDraft(), true);
+            body = { ...body, altcha: proof };
+            saveDraft({ altcha: proof });
+            response = await postOrder(body);
           }
-        });
-      }
 
-      if (openGmail) {
-        openGmail.addEventListener("click", function () {
-          openGmail.href = gmailUrl(contactNotes ? contactNotes.value.trim() : "");
-          track("email_gmail_click", { money_path: "free_email_preview_payment_after_fit" });
-        });
-      }
-
-      if (notesForm) {
-        notesForm.addEventListener("submit", function (event) {
-          event.preventDefault();
-          var email = (contactEmail && contactEmail.value || "").trim();
-          var notes = (contactNotes && contactNotes.value || "").trim();
-          if (!email || !notes) {
-            setContactStatus("Add your email and the stuck message first.", "error");
+          const payload = await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(publicError(response, payload));
+          if (payload.status === 'expired') {
+            saveDraft({ session_id: uuid4(), altcha: '', submitted_fingerprint: '' });
+            throw new Error('The previous checkout expired. Press the button again to open a new one.');
+          }
+          if (payload.checkout_url) {
+            setStatus('Request saved. Opening secure payment...', 'ok');
+            window.location.assign(payload.checkout_url);
             return;
           }
-          if (submitNotes) {
-            submitNotes.disabled = true;
-            submitNotes.textContent = "Sending...";
+          if (payload.order_url) {
+            window.location.assign(payload.order_url);
+            return;
           }
-          setContactStatus("Sending request...", "");
-          track("note_intake_submit", { note_length: notes.length, source: "messy_notes" });
-          try {
-            fetch(leadUrl, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                session_id: sessionId,
-                email: email,
-                source: "messy_notes",
-                page_url: window.location.href,
-                referrer: document.referrer || "",
-                metadata: metadata({
-                  notes: notes,
-                  note_length: notes.length,
-                  money_path: "free_email_preview_payment_after_fit"
-                })
-              })
-            }).then(function (response) {
-              if (!response.ok) throw new Error("submit failed");
-              return response.json();
-            }).then(function (payload) {
-              var operatorStatus = payload && payload.operator_email && payload.operator_email.status;
-              var customerStatus = payload && payload.customer_email && payload.customer_email.status;
-              if (operatorStatus !== "sent" || customerStatus !== "sent") {
-                throw new Error("email not sent");
-              }
-              setContactStatus("Sent. I have the request.", "ok");
-              if (submitNotes) submitNotes.textContent = "Sent";
-              track("note_intake_submit_ok", { note_length: notes.length, source: "messy_notes" });
-            }).catch(function () {
-              setContactStatus("Could not send here. Open Gmail or copy the email above.", "error");
-              if (submitNotes) {
-                submitNotes.disabled = false;
-                submitNotes.textContent = "Send request";
-              }
-              track("note_intake_submit_error", { source: "messy_notes" });
-            });
-          } catch (error) {
-            setContactStatus("Could not send here. Open Gmail or copy the email above.", "error");
-            if (submitNotes) {
-              submitNotes.disabled = false;
-              submitNotes.textContent = "Send request";
-            }
-          }
-        });
+          throw new Error('Checkout did not return a payment page. No payment was taken.');
+        } catch (error) {
+          setStatus(error && error.message ? error.message : 'Checkout could not be prepared. No payment was taken.', 'error');
+          setBusy(false);
+        }
+      });
+
+      restoreDraft();
+      const params = new URLSearchParams(location.search);
+      if (params.get('cancelled') === '1') {
+        setStatus('Checkout canceled. Your request is still here and no new payment was taken.', 'error');
       }
-
-      document.querySelectorAll('a[href$="sample.pdf"]').forEach(function (link) {
-        link.href = sampleUrl;
-        link.addEventListener("click", function () {
-          track("sample_click", { destination: link.id || "sample" });
-        });
-      });
-
-      window.addEventListener("scroll", function () {
-        maxScrollPct = Math.max(maxScrollPct, scrollPercent());
-        [25, 50, 75, 90].forEach(function (mark) {
-          if (maxScrollPct >= mark && !scrollMarks[mark]) {
-            scrollMarks[mark] = true;
-            track("scroll_depth", { threshold: mark });
-          }
-        });
-      }, { passive: true });
-
-      document.addEventListener("visibilitychange", function () {
-        track("page_visibility", { hidden: document.hidden });
-      });
-
-      track("page_view", {
-          primary_path: "email_alan_stuck_client_email_payment_after_use",
-        lead_api_available: Boolean(leadUrl)
-      });
-      window.setTimeout(function () { track("page_engagement", { threshold: "10s" }); }, 10000);
     })();
   </script>
 </body>

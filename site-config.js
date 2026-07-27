@@ -1,18 +1,9 @@
 window.AO_CONFIG = {
-  RELAY_PAUSED: true,
-  PAID_INTAKE_PAUSED: false,
+  RELAY_PAUSED: false,
   SITE_BASE_URL: "https://relaybrief.com",
-  API_BASE: "",
-  RELAY_INTENT_EVENT_URL: "",
-  RELAY_INTENT_LEAD_URL: "",
-  RELAY_INTENT_SUMMARY_URL: "",
-  FIRST_MONEY_CHECKOUT_URL: "",
-  FIRST_MONEY_PRICE_LABEL: "",
-  PACKET_CHECKOUT_URL: "",
-  PACKET_PRICE_LABEL: "",
-  PACKET_5_PACK_URL: "",
-  WEEKLY_SPRINT_URL: "",
-  MONTHLY_AUTOPILOT_URL: "",
-  SAMPLE_PDF_URL: "sample.pdf?v=20260518-stuck-client-email",
-  CLIENT_GATE_PAGE: "client-intake.html"
+  API_BASE: /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)
+    ? "http://127.0.0.1:8000"
+    : "https://alan-operator-backend-production.up.railway.app",
+  ORDER_PRICE_CENTS: 200,
+  CURRENCY: "usd"
 };
